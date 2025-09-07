@@ -26,10 +26,32 @@
       z-index: 1000;
       box-sizing: border-box;
     }
+
     nav .logo { font-size: 1.2rem; font-weight: bold; }
-    nav .nav-links { display: flex; align-items: center; }
-    nav .nav-links a { margin: 1rem 0; text-decoration: none; color: inherit; font-weight: 500; font-size: 1.5rem; text-align: center; }
-    nav .toggle-button { margin-top: 1rem; }
+
+    nav .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    nav .nav-links a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .toggle-button {
+      cursor: pointer;
+      background: #7b3f00;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-left: 1rem;
+    }
 
     .hamburger {
       display: none;
@@ -37,6 +59,7 @@
       cursor: pointer;
       z-index: 1100;
     }
+
     .hamburger div {
       width: 25px;
       height: 3px;
@@ -51,7 +74,7 @@
     a.contact { font-size: 1.1rem; color: #fff; background: #7b3f00; padding: 0.75rem 1.25rem; border-radius: 8px; text-decoration: none; }
     a.contact:hover { background: #5a2d00; }
 
-    section { max-width: 800px; margin: 4rem auto; padding: 0 1rem; }
+    section { max-width: 800px; margin: 4rem auto; padding: 0 1rem; scroll-margin-top: 70px; }
     section h2 { text-align: center; margin-bottom: 1.5rem; }
 
     footer { text-align: center; padding: 2rem 1rem; font-size: 0.85rem; color: #555; border-top: 1px solid #e5d3b3; }
@@ -67,19 +90,11 @@
     body.dark a.contact { color: #2c1810; background: #f1d9b2; }
     body.dark a.contact:hover { background: #d4a373; }
     body.dark .hamburger div { background-color: #f8f5f0; }
-
-    .toggle-button {
-      cursor: pointer;
-      background: #7b3f00;
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-weight: bold;
-    }
     body.dark .toggle-button { background: #f1d9b2; color: #2c1810; }
 
     @media screen and (max-width: 768px) {
+      .hamburger { display: flex; }
+
       nav .nav-links {
         display: none;
         position: fixed;
@@ -94,26 +109,28 @@
         z-index: 1000;
         text-align: center;
       }
+
       nav .nav-links a, nav .nav-links .toggle-button {
         margin: 1.5rem 0;
+        font-size: 1.5rem;
+        text-align: center;
       }
-      .hamburger { display: flex; }
     }
   </style>
 </head>
 <body>
   <nav>
     <div class="logo">☕ COffEE</div>
-    <div class="hamburger" onclick="toggleMenu(this)">
+    <div class="hamburger" onclick="toggleMenu()">
       <div></div>
       <div></div>
       <div></div>
     </div>
-    <div class="nav-links">
-      <a href="#why" onclick="closeMenu()">Why COffEE</a>
-      <a href="#about" onclick="closeMenu()">About</a>
-      <a href="#founders" onclick="closeMenu()">Founders</a>
-      <a class="contact-link" href="mailto:shashankkotturi@outlook.com" onclick="closeMenu()">Contact</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#why" data-target="why">Why COffEE</a>
+      <a href="#about" data-target="about">About</a>
+      <a href="#founders" data-target="founders">Founders</a>
+      <a class="contact-link" href="mailto:shashankkotturi@outlook.com">Contact</a>
       <button class="toggle-button" onclick="toggleDarkMode()">Switch Theme</button>
     </div>
   </nav>
@@ -158,16 +175,29 @@
   </footer>
 
   <script>
+    const navLinks = document.getElementById('navLinks');
+
     function toggleDarkMode() {
       document.body.classList.toggle('dark');
     }
 
-    function toggleMenu(hamburger) {
-      const navLinks = document.querySelector('.nav-links');
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    function toggleMenu() {
+      if (navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.style.display = 'flex';
+      }
     }
-    
+
+    document.querySelectorAll('.nav-links a[data-target]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('data-target');
+        const targetEl = document.getElementById(targetId);
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (window.innerWidth <= 768) navLinks.style.display = 'none';
+      });
+    });
   </script>
 </body>
 </html>
-
