@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COffEE – Context Offloading Framework</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+      color: #2c1810;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+    nav .logo { font-size: 1.2rem; font-weight: bold; }
+    nav a { margin-left: 1.5rem; text-decoration: none; color: inherit; font-weight: 500; }
+    nav a.contact-link { margin-left: 1.5rem; }
+    nav button.toggle-button { margin-left: 1rem; }
+
+    header { text-align: center; padding: 6rem 1rem 4rem; }
+    header h1 { font-size: 2.8rem; margin-bottom: 1rem; }
+    header p.tagline { font-size: 1.3rem; max-width: 700px; margin: 0 auto 2rem; }
+    a.contact { font-size: 1.1rem; color: #fff; background: #7b3f00; padding: 0.75rem 1.25rem; border-radius: 8px; text-decoration: none; }
+    a.contact:hover { background: #5a2d00; }
+
+    section { max-width: 800px; margin: 4rem auto; padding: 0 1rem; }
+    section h2 { text-align: center; margin-bottom: 1.5rem; }
+
+    footer { text-align: center; padding: 2rem 1rem; font-size: 0.85rem; color: #555; border-top: 1px solid #e5d3b3; }
+
+    /* Dark mode */
+    body.dark {
+      background: #2c1810;
+      color: #f8f5f0;
+    }
+    body.dark nav { background: #1e120c; }
+    body.dark nav a, body.dark nav .logo { color: #f8f5f0; }
+    body.dark header p.tagline { color: #f8f5f0; }
+    body.dark a.contact { color: #2c1810; background: #f1d9b2; }
+    body.dark a.contact:hover { background: #d4a373; }
+
+    .toggle-button {
+      cursor: pointer;
+      background: #7b3f00;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    body.dark .toggle-button { background: #f1d9b2; color: #2c1810; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">☕ COffEE</div>
+    <div>
+      <a href="#why">Why COffEE</a>
+      <a href="#about">About</a>
+      <a href="#founders">Founders</a>
+      <a class="contact-link" href="mailto:shashankkotturi@outlook.com">Contact</a>
+      <button class="toggle-button" onclick="toggleDarkMode()">Switch Theme</button>
+    </div>
+  </nav>
+
+  <header>
+    <h1>☕ Humans need coffee.<br/>So do AI agents.</h1>
+    <p class="tagline">
+      COffEE (Context Offloading on the Edge for Enterprises) keeps AI agents sharp, scalable, and cost-effective. By only loading the context they need, when they need it, we cut waste by up to 90% — while boosting accuracy and efficiency.
+    </p>
+    <a class="contact" href="mailto:shashankkotturi@outlook.com">Contact Us</a>
+  </header>
+
+  <section id="why">
+    <h2>Why COffEE?</h2>
+    <p>
+      Most AI agents overload themselves — dragging every tool, rule, and prompt into memory, even for trivial tasks. The result: wasted tokens, reduced context for real work, and ballooning costs.
+    </p>
+    <p>
+      COffEE flips this model: it <strong>dynamically loads only what’s relevant</strong>. That means scalability (thousands of tools supported), accuracy (longer conversations stay consistent), and efficiency (up to 90% fewer wasted tokens).
+    </p>
+  </section>
+
+  <section id="about">
+    <h2>About Coffee</h2>
+    <p>
+      Coffee is a standalone framework designed for enterprises that want AI that scales without exploding costs. Inspired by how humans refuel with coffee, it gives AI agents the same boost — but in the form of context management.
+    </p>
+  </section>
+
+  <section id="founders">
+    <h2>Founders</h2>
+    <p>
+      <strong>Shashank Kotturi</strong>: Senior Product Manager – Technical at Amazon, with a passion for building AI tools that make complex tasks simple. <a href="https://www.linkedin.com/in/shashank-kotturi/" target="_blank">LinkedIn</a> | <a href="https://github.com/shashankkotturi" target="_blank">GitHub</a>
+    </p>
+    <p>
+      <strong>Barry Boubacar</strong>: Solution Architect at Cision, with deep curiosity for system architecture and AI efficiency. <a href="https://www.linkedin.com/in/boubacar-barry-6b886479/" target="_blank">LinkedIn</a> | <a href="https://github.com/barryboubacar" target="_blank">GitHub</a>
+    </p>
+  </section>
+
+  <footer>
+    © 2025 Coffee – All rights reserved.
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+</body>
+</html>
